@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script type="text/javascript">
+
+    //test1
+    var x = [4, 6, 32, 14, 'milk', 18, 19, 25, 9, 11];
+    var max = null;
+
+    for(var z=0; z < x.length; z++) {
+        if(typeof (x[z]) == "number"){
+            if(x[z] >= max || max == null) {
+                max = x[z];
+            }
+        }
+    }
+    console.log(max);
+
+    //test2.1
+    function func1 (firstParam, secondParam){
+        var calculations;
+
+        if(firstParam > secondParam) {
+            calculations = firstParam;
+        } else {
+            calculations = secondParam;
+        }
+        return calculations;
+
+
+    }
+
+
+    //test
+
+
+
+</script>
+<body>
+
+</body>
+</html>,
