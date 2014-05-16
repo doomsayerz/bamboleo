@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    //test page 37.1
+    dog = {
+      length : 100,
+      weight : 30,
+      voice : "Bark",
+            };
+
+    function calcSum (dog){
+       var sum = 0;
+
+       for (var propNames in dog) {
+           if (!isNaN(+dog[propNames])) { // уточнить как работает
+               sum = sum + dog[propNames];
+           }
+                             }
+        return sum;
+          }
+    console.log(calcSum(dog));
+
+    //test page 37.2
+
+    var car = {
+        speed : 200,
+        weight : 700,
+        color : 'silver',
+        ignition : false,
+        startMove : function () {
+            if (this.ignition == true){
+            console.log("I am moving, bitch!!!")
+            }
+        }
+        stopMove : function () {
+            if (this.ignition == true) {
+                this.ignition = false;
+                console.log("OKAY NIGGA I BE STAHPING")
+            }
+        }
+        var passengers = ['Elton John', '']
+    }
+</script>
+</body>
+</html>
