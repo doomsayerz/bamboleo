@@ -9,21 +9,21 @@
 
     //test page 37.1
     dog = {
-      length : 100,
-      weight : 30,
-      voice : "Bark",
-            };
+        length : 100,
+        weight : 30,
+        voice : "Bark",
+    };
 
     function calcSum (dog){
-       var sum = 0;
+        var sum = 0;
 
-       for (var propNames in dog) {
-           if (!isNaN(+dog[propNames])) { // уточнить как работает
-               sum = sum + dog[propNames];
-           }
-                             }
+        for (var propNames in dog) {
+            if (!isNaN(+dog[propNames])) { // уточнить как работает
+                sum = sum + dog[propNames];
+            }
+        }
         return sum;
-          }
+    }
     console.log(calcSum(dog));
 
     //test page 37.2
@@ -33,19 +33,98 @@
         weight : 700,
         color : 'silver',
         ignition : false,
+        passSeats: 4,
         startMove : function () {
             if (this.ignition == true){
-            console.log("I am moving, bitch!!!")
-            }
-        }
+                alert("I am already moving, bitch");
+                else
+                ignition = true;
+                alert.("OKAY LETS GO NIGGA")
+            };
+        },
         stopMove : function () {
             if (this.ignition == true) {
                 this.ignition = false;
-                console.log("OKAY NIGGA I BE STAHPING")
+                alert("OKAY NIGGA I BE STAHPING");
+                else
+                alert('Nigga I stand still already')
+            };
+        },
+        passengers : [],
+        addPass : function () {
+            if (!this.ignition && this.passengers.length < this.passSeats) {
+                this.passengers.push('passenger' + this.passengers.length + 1);
+                alert("JUMP IN NIGGA");
+                } else if (this.ignition && this.passengers.length >= this.passSeats) {
+                alert("Hold your horses nigga, no more places and I'm moving");
+                } else if (this.ignition) {
+                alert("yo stahp first");
+                } else {
+                alert("No more vacant places nigga");
             }
         }
-        var passengers = ['Elton John', '']
+
     }
+
+    //cart
+    var availGoods = [
+        {
+            name : "TV",
+            price : 2000
+        },
+        {
+            name : "PC",
+            price : 3000
+        },
+        {
+            name : "smartphone",
+            price : 3500
+        },
+        {
+            name: "camera",
+            price: 5000,
+        },
+        {
+            name : "tablet",
+            price : 4500,
+        }
+    ];
+
+    var confShop = confirm("Do you want to add any goods to the cart?");
+    var custInquiry = prompt("Enter name of the desired good", "");
+
+    var cart = {
+        goodsQuantity : 0,
+        goodsList : [],
+        checkAvail : function() {
+            for (var i = 0; i < availGoods.length; i++) {
+                if (availGoods[i].name == custInquiry) {
+                return true }
+            }
+            alert("No such good");
+            },
+        addGood : function () {
+            if (this.checkAvail == true) {
+                this.goodsList.push(custInquiry) }
+            },
+        findGood : function (delItem){
+            for (var i = 0; i < this.goodsList.length; i++) {
+                if (this.goodsList[i].name == delItem) {
+                return true }
+            }
+                return -1;
+            },
+        delGood : function () {
+            var delItem = prompt("Enter the name of the good you would like to delete", "");
+                if (this.findGood == true) {
+
+                }
+            },
+    }
+
+
 </script>
+
+
 </body>
 </html>
