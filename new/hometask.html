@@ -91,6 +91,9 @@
     ];
 
     var confShop = confirm("Do you want to add any goods to the cart?");
+        if (confShop == false) {
+            break }
+        }
     var custInquiry = prompt("Enter name of the desired good", "");
 
     var cart = {
@@ -103,7 +106,7 @@
             }
             alert("No such good");
             },
-        addGood : function () {
+        addGood : function () { // НЕ ПHОВЕРЕНО
             if (this.checkAvail == true) {
                 this.goodsList.push(custInquiry) }
             },
@@ -112,10 +115,10 @@
                 if (this.goodsList[i].name == delItem) {
                 return true }
             }
-                return -1;
+                return -1;  //УТОЧНИТЬ КАК РАБОТАЕТ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             },
         delGood : function () {
-            var delItem = prompt("Enter the name of the good you would like to delete", "");
+            var delItem = prompt("Enter the name of the good you would like to delete", ""); // тут ли делать промпт или как глобальную
                 if (this.findGood == true) {
 
                 }
