@@ -35,7 +35,7 @@
         if (confShop) {
             var custInquiry = prompt("Enter name of the desired good", "");
     }
-
+    var delItem = prompt("Enter the name of the good you would like to delete", "");
     var cart = {
         goodsQuantity : 0,
         goodsList : [],
@@ -49,20 +49,20 @@
         addGood : function () {
             var i = this.checkAvail() ;
                 if (i >= 0) {
-                    this.goodsList.push(availGoods[i])
+                    this.goodsList.push(availGoods[i]);
                 } else alert("No such item");
         },
         findGood : function (){
             for (var i = 0; i < this.goodsList.length; i++) {
                 if (this.goodsList[i].name == delItem) {
-                    return true }
-            }
+                    return i }
+            } alert("There is no such good in your cart");
             return -1;
         },
         delGood : function () {
-            var delItem = prompt("Enter the name of the good you would like to delete", ""); // тут ли делать промпт или как глобальную
-            if (this.findGood == true) {
-
+            var i = this.findGood();
+            if (i >= 0) {
+            this.goodsList.splice(0, i);
             }
         }
     }
