@@ -34,7 +34,9 @@
     var confShop = confirm("Do you want to add any goods to the cart?");
         if (confShop) {
             var custInquiry = prompt("Enter name of the desired good", "");
+            cart.addGood();
     }
+
     var delItem = prompt("Enter the name of the good you would like to delete", "");
     var cart = {
         goodsQuantity : 0,
