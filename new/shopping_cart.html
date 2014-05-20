@@ -73,10 +73,13 @@
             var custInquiry = prompt("Enter name of the desired good", "");
             cart.addGood();
     }
+    alert(cart.countPrice());
 
     var delItem = prompt("Enter the name of the good you would like to delete", "");
 
+    cart.delGood();
 
+    alert(cart.countPrice());
 
 </script>
 
