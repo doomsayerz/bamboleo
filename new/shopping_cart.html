@@ -42,20 +42,21 @@
         checkAvail : function() {
             for (var i = 0; i < availGoods.length; i++) {
                 if (availGoods[i].name == custInquiry) {
-                    return availGoods[i] }
-            }
-            alert("No such good");
+                    return i }
+            } alert("No such good");
+            return -1;
         },
-        addGood : function () { // НЕ ПРОВЕРЕНО
-            if (this.checkAvail == true) {
-                this.goodsList.push(availGoods[i]) }
+        addGood : function () {
+            var i = this.checkAvail(){
+                if (i >= 0) {
+                    this.goodsList.push(availGoods[i]) }
         },
-        findGood : function (delItem){
+        findGood : function (){
             for (var i = 0; i < this.goodsList.length; i++) {
                 if (this.goodsList[i].name == delItem) {
                     return true }
             }
-            return -1;  //УТОЧНИТЬ КАК РАБОТАЕТ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return -1;
         },
         delGood : function () {
             var delItem = prompt("Enter the name of the good you would like to delete", ""); // тут ли делать промпт или как глобальную
