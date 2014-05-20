@@ -31,13 +31,6 @@
         }
     ];
 
-    var confShop = confirm("Do you want to add any goods to the cart?");
-        if (confShop) {
-            var custInquiry = prompt("Enter name of the desired good", "");
-            cart.addGood();
-    }
-
-    var delItem = prompt("Enter the name of the good you would like to delete", "");
     var cart = {
         goodsQuantity : 0,
         goodsList : [],
@@ -50,9 +43,9 @@
         },
         addGood : function () {
             var i = this.checkAvail() ;
-                if (i >= 0) {
-                    this.goodsList.push(availGoods[i]);
-                } else alert("No such item");
+            if (i >= 0) {
+                this.goodsList.push(availGoods[i]);
+            } else alert("No such item");
         },
         findGood : function (){
             for (var i = 0; i < this.goodsList.length; i++) {
@@ -64,7 +57,7 @@
         delGood : function () {
             var i = this.findGood();
             if (i >= 0) {
-            this.goodsList.splice(i);
+                this.goodsList.splice(i);
             }
         },
         countPrice : function () {
@@ -73,7 +66,16 @@
                 sum = sum + this.goodsList[i].price;
             } return sum;
         }
+    };
+
+    var confShop = confirm("Do you want to add any goods to the cart?");
+        if (confShop) {
+            var custInquiry = prompt("Enter name of the desired good", "");
+            cart.addGood();
     }
+
+    var delItem = prompt("Enter the name of the good you would like to delete", "");
+
 
 
 </script>
