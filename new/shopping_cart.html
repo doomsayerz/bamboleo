@@ -42,13 +42,13 @@
         checkAvail : function() {
             for (var i = 0; i < availGoods.length; i++) {
                 if (availGoods[i].name == custInquiry) {
-                    return true }
+                    return availGoods[i] }
             }
             alert("No such good");
         },
         addGood : function () { // НЕ ПРОВЕРЕНО
             if (this.checkAvail == true) {
-                this.goodsList.push(custInquiry) }
+                this.goodsList.push(availGoods[i]) }
         },
         findGood : function (delItem){
             for (var i = 0; i < this.goodsList.length; i++) {
