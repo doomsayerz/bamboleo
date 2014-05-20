@@ -50,7 +50,7 @@
             var i = this.checkAvail() ;
                 if (i >= 0) {
                     this.goodsList.push(availGoods[i])
-                } alert("No such item");
+                } else alert("No such item");
         },
         findGood : function (){
             for (var i = 0; i < this.goodsList.length; i++) {
