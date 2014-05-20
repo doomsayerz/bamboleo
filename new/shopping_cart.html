@@ -62,8 +62,14 @@
         delGood : function () {
             var i = this.findGood();
             if (i >= 0) {
-            this.goodsList.splice(0, i);
+            this.goodsList.splice(i);
             }
+        },
+        countPrice : function () {
+            var sum = 0;
+            for (var i = 0; i < this.goodsList.length; i++) {
+                sum = sum + this.goodsList[i].price;
+            } return sum;
         }
     }
 
