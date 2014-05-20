@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    //cart
+    var availGoods = [
+        {
+            name : "TV",
+            price : 2000
+        },
+        {
+            name : "PC",
+            price : 3000
+        },
+        {
+            name : "smartphone",
+            price : 3500
+        },
+        {
+            name: "camera",
+            price: 5000,
+        },
+        {
+            name : "tablet",
+            price : 4500,
+        }
+    ];
+
+    var confShop = confirm("Do you want to add any goods to the cart?");
+    if (confShop == false) {
+        break }
+    }
+    var custInquiry = prompt("Enter name of the desired good", "");
+
+    var cart = {
+        goodsQuantity : 0,
+        goodsList : [],
+        checkAvail : function() {
+            for (var i = 0; i < availGoods.length; i++) {
+                if (availGoods[i].name == custInquiry) {
+                    return true }
+            }
+            alert("No such good");
+        },
+        addGood : function () { // НЕ ПРОВЕРЕНО
+            if (this.checkAvail == true) {
+                this.goodsList.push(custInquiry) }
+        },
+        findGood : function (delItem){
+            for (var i = 0; i < this.goodsList.length; i++) {
+                if (this.goodsList[i].name == delItem) {
+                    return true }
+            }
+            return -1;  //УТОЧНИТЬ КАК РАБОТАЕТ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        },
+        delGood : function () {
+            var delItem = prompt("Enter the name of the good you would like to delete", ""); // тут ли делать промпт или как глобальную
+            if (this.findGood == true) {
+
+            }
+        },
+    }
+
+
+</script>
+
+</body>
+</html>
