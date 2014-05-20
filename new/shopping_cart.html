@@ -32,10 +32,9 @@
     ];
 
     var confShop = confirm("Do you want to add any goods to the cart?");
-    if (confShop == false) {
-        break }
+        if (confShop) {
+            var custInquiry = prompt("Enter name of the desired good", "");
     }
-    var custInquiry = prompt("Enter name of the desired good", "");
 
     var cart = {
         goodsQuantity : 0,
