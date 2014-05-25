@@ -111,6 +111,20 @@
 
     //test2
 
+
+    function checkLinks (element) {
+
+        var links = element.getElementsByTagName('a');
+        
+
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].attributes.indexOf('href') >= 0);
+            validLinks = validLinks++;
+        } else {
+            invalidLinks = invalidLinks++;
+        }
+    }
+
 </script>
 </body>
 </html>
