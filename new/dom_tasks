@@ -106,11 +106,8 @@
         childElement.className = 'new-div-classname';
         childElement.style.color = 'red';
         childElement.innerHTML = result;
-        parentElement.appendChild( childElement );
+        parentElement.appendChild(childElement);
     }
-
-     appendPTag(result);
-
 
     //test2
 
