@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="test-div">
+        <span attr="attrvalue">
+            <p>Paragraph</p>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+        </span>
+
+    <p>Paragraph 2</p>
+    <a> Link6</a>
+
+    <h2>H2 tag</h2>
+</div>
+
+<div id="diw-with-id" style="color:blue">
+    <a href="#">Link4</a>
+    <table>
+    </table>
+    <a href="/"></a>
+    <span></span>
+
+    <div accesskey="some-key" class="some-test-class"></div>
+
+    <a> Link5</a>
+
+    <div></div>
+
+</div>
+
+<a href="#">Link3</a>
+
+<article>
+    Article tag
+    <a href="#"></a>
+</article>
+
+<input type="text" id="input-text" placeholder="Введите тег для удаления...">
+
+
+<input type="button" value="I button">
+
+<input type="button" value="I Button">
+
+<script type="text/javascript">
+    /**
+     * 1. Написать функцию которая получает как параметр HTML элеемент и выводит на екран основные свойства и все атрибуты
+     * себя и всех дочерних елементов.
+     * Вывод на экран осуществляется вставкой в <body> тега <div>  и информации в нем.
+     *
+     * 2. Написать функцию которая получает как параметр HTML элемент и подсчитывает колличество
+     * валидных ссылок и колличество неправильных ссылок ( тех у кого не указан аттрибут href) и вставляет эту инфорцмацию
+     * в переданный елемент в теге <div> красным текстов
+     *
+     * 3. Модифицировать функцию из пункта 2  чтобы она всем неправильным ссылкам добавляла аттрибут not-valid со значением true.
+     *
+     * 4. Написать функцию которая забирает значение input.
+     * В это поле можно ввести имя тега. Функция должна срабатывать по клику на кнопку и должна удалять из документа
+     * все теги с таким именем.
+     * Перед удалением функция должна собирать список всех возможных тегов документа и проверять введенное имя на валидность.
+     * Статистику удаления должна вставлятся ввиде textNode в конец документа.
+     *
+     * 5. Написать функцию которая получает на входе елемент и выводит в консоль все елементы с таким же тегом на ее уровне.
+     */
+
+
+        //test1
+    function getAttributes(element) {
+
+        if (element.hasAttributes()) {
+            for (var i = 0; i < element.attributes.length; i++) {
+                if (typeof element.attributes[i] != 'function') {
+                    result = result + ('<br>Имя: ' + element.attributes[i].nodeName + ', Значение: ' + element.getAttribute(element.attributes[i].nodeName) + '<br>');
+                }
+            }
+        }
+    }
+
+    function getProperties(element) {
+        result = result + ('Свойства: Название(тэг): ' + element.nodeName + ', Тип: ' + element.nodeType + '<br>');
+    }
+
+    function getElementInfo(element) {
+        getAttributes(element);
+        getProperties(element);
+
+        for (var i = 0; i < element.children.length; i++) {
+            console.log('Имя дочернего элемента: ' + element.children[i]);
+            getAttributes(element.children[i]);
+            getProperties(element.children[i]);
+        }
+        appendPTag(result);
+    }
+    var result;
+    var idsElement = document.getElementById('diw-with-id');
+    getElementInfo(idsElement);
+
+    function appendPTag(result) {
+        var parentElement = document.body;
+        var childElement = document.createElement('div');
+        childElement.id = 'new-div';
+        childElement.className = 'new-div-classname';
+        childElement.style.color = 'green';
+        childElement.innerHTML = result;
+        parentElement.appendChild(childElement);
+    }
+
+
+    //test2
+
+
+    function checkLinks(element) {
+
+        var validLinksAmount = 0;
+        var links = element.getElementsByTagName('a');
+
+        for (var i = 0; i < links.length; i++) {
+            for (var a in links[i].attributes) {
+                if (links[i].attributes[a].nodeName == 'href') {
+                    validLinksAmount++;
+                }
+            }
+        }
+        var parentElement = document.body;
+        var childElement = document.createElement('div');
+        childElement.id = 'new-div-2';
+        childElement.className = 'new-div-classname';
+        childElement.style.color = 'red';
+        childElement.innerHTML = "<br>Кол-во валидных ссылок: " + validLinksAmount + "<br>" + "Кол-во невалидных ссылок: " + (links.length - validLinksAmount);
+        parentElement.appendChild(childElement);
+    }
+    checkLinks(idsElement);
+
+    //test3
+    function checkLinks1(element) {
+
+        var isValid = false;
+        var validLinksAmount = 0;
+        var links = element.getElementsByTagName('a');
+
+        for (var i = 0; i < links.length; i++) {
+            isValid = false;
+            for (var a in links[i].attributes) {
+                if (links[i].attributes[a].nodeName == 'href') {
+                    validLinksAmount++;
+                    isValid = true;
+                }
+            }
+            if (!isValid) {
+                var newAttr = document.createAttribute( "not-valid" );
+                newAttr.nodeValue = "true";
+                links[i].attributes.setNamedItem(newAttr);
+            }
+        }
+    }
+    checkLinks1(idsElement);
+
+    //test4
+    var $input = document.getElementById('input-text');
+    var inputValue = $input.value;
+
+    function deleteTag (element) {
+        if (document.getElementsByTagName(inputValue) == true) { //не понял как обратится ко всем тегам чтобы перебрать их + не было в словарике удаления элементов
+        var tags =
+        }
+
+</script>
+</body>
+</html>
