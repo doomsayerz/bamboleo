@@ -194,16 +194,15 @@
     }
 
     //test5
-    var elem = document.getElementsByClassName("test-div")[0];    
+    var elem = document.getElementsByClassName("test-div")[0];
 
     function showSiblings(elem) {
-        var elemSiblings = elem.parentElement.children;a       
+        var elemSiblings = elem.parentElement.children;a
         if (!elemSiblings) {
             alert ("no children found");
             return;
         }
-        for (var i = 0; i < elemSiblings.length; i++) {
-            //console.log(elemSiblings[i].nodeName);
+        for (var i = 0; i < elemSiblings.length; i++) {            
             if (elemSiblings[i].nodeName == elem.nodeName) {
             console.log(elemSiblings[i]);
             }
