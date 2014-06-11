@@ -42,7 +42,7 @@
 <input type="text" id="input-text" placeholder="Введите тег для удаления...">
 
 
-<input type="button" value="I button">
+<input type="button" id="button1" value="Delete tag">
 
 <input type="button" value="I Button">
 
@@ -151,7 +151,7 @@
                 }
             }
             if (!isValid) {
-                var newAttr = document.createAttribute( "not-valid" );
+                var newAttr = document.createAttribute("not-valid");
                 newAttr.nodeValue = "true";
                 links[i].attributes.setNamedItem(newAttr);
             }
@@ -161,12 +161,57 @@
 
     //test4
     var $input = document.getElementById('input-text');
-    var inputValue = $input.value;
+    var inputValue;
 
-    function deleteTag (element) {
-        if (document.getElementsByTagName(inputValue) == true) { //не понял как обратится ко всем тегам чтобы перебрать их + не было в словарике удаления элементов
-        var tags =
+    function deleteTag() {
+        inputValue = $input.value;
+        if (document.getElementsByTagName(inputValue)) { //не понял как обратится ко всем тегам чтобы перебрать их + не было в словарике удаления элементов
+            var tags = document.getElementsByTagName(inputValue);
+            var parent;
+            while (tags.length) {
+                parent = tags[0].parentElement;
+                parent.removeChild(tags[0]);
+                tags = document.getElementsByTagName(inputValue);
+            }
+            var result = 'The following tags have been deleted: ' + inputValue;
+        } else {
+            alert("No such tag");
         }
+        return result;
+    }
+    var $button1 = document.getElementById('button1');
+
+    $button1.addEventListener('click', addResult, false);
+
+    function addResult() {
+        var parentElement = document.body;
+        var childElement = document.createElement('div');
+        childElement.id = 'new-div-3';
+        childElement.className = 'new-div-classname';
+        childElement.style.color = 'orange';
+        childElement.innerHTML = deleteTag();
+        parentElement.appendChild(childElement);
+    }
+
+    //test5
+    var elem = document.getElementsByClassName("test-div")[0];    
+
+    function showSiblings(elem) {
+        var elemSiblings = elem.parentElement.children;a       
+        if (!elemSiblings) {
+            alert ("no children found");
+            return;
+        }
+        for (var i = 0; i < elemSiblings.length; i++) {
+            //console.log(elemSiblings[i].nodeName);
+            if (elemSiblings[i].nodeName == elem.nodeName) {
+            console.log(elemSiblings[i]);
+            }
+        }
+    }
+
+    showSiblings(elem);
+
 
 </script>
 </body>
