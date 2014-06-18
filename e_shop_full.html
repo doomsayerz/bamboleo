@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My shop</title>
+    <link rel="stylesheet" type="text/css" href="e_shop_full.css">
+</head>
+<body>
+<div>
+    <table id="mainTable">
+        <tbody>
+        <tr>
+            <td><B>Магазин</B></td>
+            <td><B>Корзина</B></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables">
+                    <tbody>
+                    <tr>
+                        <td class="itemName">Название товара</td>
+                        <td class="medCell">Цена</td>
+                        <td id="buy">Купить</td>
+                    </tr>
+                    <tr>
+                        <td>Фен, 1г.</td>
+                        <td>$100</td>
+                        <td class="buyButt"><input type="button" id="purchase-button-1" value="Купить"></td>
+                    </tr>
+                    <tr>
+                        <td>Ширево, 1г.</td>
+                        <td>$70</td>
+                        <td class="buyButt"><input type="button" id="purchase-button-2" value="Купить"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <div class="cart">
+                    Товаров в корзине<br><br>
+                    0 товаров
+                </div>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<div id="tableCart">
+    <table class="tables">
+        <tbody>
+            <tr>
+                <td class="itemName">Название товара</td>
+                <td class="medCell">Цена</td>
+                <td class ='medCell'>Количество</td>
+                <td id="buy1">Действия</td>
+            </tr>
+            <tr>
+                <td>Фен, 1г.</td>
+                <td>$100</td>
+                <td>0</td>
+                <td class="buyButt"><input type="button" id="delete-button-1" value="Удалить"><input type="button" id="change-button-1" value="Изменить количество"></td>
+            </tr>
+            <tr>
+                <td>Ширево, 1г.</td>
+                <td>$70</td>
+                <td>0</td>
+                <td class="buyButt"><input type="button" id="delete-button-2" value="Удалить"><input type="button" id="change-button-2" value="Изменить количество"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
