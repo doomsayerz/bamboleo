@@ -2,86 +2,120 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>My shop</title>
+    <link rel="stylesheet" type="text/css" href="e_shop_full.css">
 </head>
 <body>
-<script type="text/javascript">
+<div>
+    <table id="mainTable">
+        <tbody>
+        <tr>
+            <td><B>Магазин</B></td>
+            <td><B>Корзина</B></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables">
+                    <tbody>
+                    <tr>
+                        <td class="itemName">Название товара</td>
+                        <td class="medCell">Цена</td>
+                        <td id="buy">Купить</td>
+                    </tr>
+                    <tr>
+                        <td>Фен, 1г.</td>
+                        <td>$100</td>
+                        <td class="buyButt"><input type="button" id="purchase-button-1" value="Купить"></td>
+                    </tr>
+                    <tr>
+                        <td>Ширево, 1г.</td>
+                        <td>$70</td>
+                        <td class="buyButt"><input type="button" id="purchase-button-2" value="Купить"></td>
+                    </tr>
+                    <tr>
+                        <td>Колеса</td>
+                        <td>$90</td>
+                        <td class="buyButt"><input type="button" id="purchase-button-3" value="Купить"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <div class="cart">
+                    Товаров в корзине<br><br>
+                    0 товаров
+                </div>
+            </td>
+        </tr>
 
-    //cart
-    var availGoods = [
-        {
-            name : "TV",
-            price : 2000
-        },
-        {
-            name : "PC",
-            price : 3000
-        },
-        {
-            name : "smartphone",
-            price : 3500
-        },
-        {
-            name: "camera",
-            price: 5000
-        },
-        {
-            name : "tablet",
-            price : 4500
-        }
-    ];
+        </tbody>
+    </table>
+</div>
+<div id="tableCart">
+    <table class="tables">
+        <tbody>
+        <tr>
+            <td class="itemName">Название товара</td>
+            <td class="medCell">Цена</td>
+            <td class='medCell'>Количество</td>
+            <td id="buy1">Действия</td>
+        </tr>
+        <tr>
+            <td>Фен, 1г.</td>
+            <td>$100</td>
+            <td>0</td>
+            <td class="buyButt"><input type="button" id="delete-button-1" value="Удалить"><input type="button"
+                                                                                                 id="change-button-1"
+                                                                                                 value="Изменить количество">
+            </td>
+        </tr>
+        <tr>
+            <td>Ширево, 1г.</td>
+            <td>$70</td>
+            <td>0</td>
+            <td class="buyButt"><input type="button" id="delete-button-2" value="Удалить"><input type="button"
+                                                                                                 id="change-button-2"
+                                                                                                 value="Изменить количество">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="submit-order">
+    <input type="button" id="submit-button" value="Оформить заказ">
+</div>
+<div id="billing-info">
+    <table>
+        <tbody>
+        <tr>
+            <td>Имя</td>
+            <td><input type="text" id="clienFirstName"></td>
+        </tr>
+        <tr>
+            <td>Фамилия</td>
+            <td><input type="text" id="clienLastName"></td>
+        </tr>
+        <tr>
+            <td>Адрес</td>
+            <td><input type="text" id="clientAddress"</td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="button" id="confirm-details" value="Подтвердить">
+</div>
+<br>
 
-    var cart = {
-        goodsQuantity : 0,
-        goodsList : [],
-        checkAvail : function() {
-            for (var i = 0; i < availGoods.length; i++) {
-                if (availGoods[i].name == custInquiry) {
-                    return i }
-            } alert("No such good");
-            return -1;
-        },
-        addGood : function () {
-            var i = this.checkAvail() ;
-            if (i >= 0) {
-                this.goodsList.push(availGoods[i]);
-            } else alert("No such item");
-        },
-        findGood : function (){
-            for (var i = 0; i < this.goodsList.length; i++) {
-                if (this.goodsList[i].name == delItem) {
-                    return i }
-            } alert("There is no such good in your cart");
-            return -1;
-        },
-        delGood : function () {
-            var i = this.findGood();
-            if (i >= 0) {
-                this.goodsList.splice(i, 1);
-            }
-        },
-        countPrice : function () {
-            var sum = 0;
-            for (var i = 0; i < this.goodsList.length; i++) {
-                sum = sum + this.goodsList[i].price;
-            } return sum;
-        }
-    };
-
-    var confShop = confirm("Do you want to add any goods to the cart?");
-        if (confShop) {
-            var custInquiry = prompt("Enter name of the desired good", "");
-            cart.addGood();
-    }
-    alert(cart.countPrice());
-
-    var delItem = prompt("Enter the name of the good you would like to delete", "");
-
-    cart.delGood();
-
-    alert(cart.countPrice());
-
-</script>
-
+<div id="receipt">
+    <table id="receipt-table">
+        <tbody>
+        <tr>
+            <td class="receiptInfo"><h2>Счет:</h2></td>
+        </tr>
+        <tr>
+            <td class="receiptInfo"><h2>$0</h2></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
