@@ -2,33 +2,70 @@
     border: 1px solid black;
     border-collapse: collapse;
 }
+
 .tables tr:nth-child(odd) {
     background: #CCC;
 }
+
 .cart {
     border: 1px solid black;
-    width:150px;
-    height:70px;
-    text-align:center;
+    width: 150px;
+    height: 70px;
+    text-align: center;
 }
+
 .itemName {
     width: 400px;
 }
+
 .medCell {
     width: 120px;
 }
+
 #buy {
     width: 120px;
 }
+
 .buyButt {
-    text-align:center;
+    text-align: center;
 }
+
 #mainTable {
     width: 1000px;
 }
+
 #buy1 {
     width: 320px;
 }
+
 #tableCart {
-    padding: 40px;
+    padding: 40px 0px 0px 0px;
+}
+
+#submit-order {
+    padding: 15px 0px 0px 750px;
+}
+
+#billing-info {
+    border: 1px solid black;
+    width: 237px;
+    height: 113px;
+}
+
+#billing-info input:last-child {
+    float: right;
+}
+
+#receipt {
+    border: 1px solid black;
+    width: 237px;
+    height: 150px;
+    }
+
+h2 {
+    text-align: center;
+}
+
+#receipt-table {
+    margin:auto;
 }
