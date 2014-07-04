@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="application/javascript">
+
+    function BasicEmployee(name, age, sex, work) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.work = work;
+    }
+    BasicEmployee.prototype.working = function () {
+        console.log('I am' + this.work + 'ing');
+    }
+    BasicEmployee.prototype.getSalary = function () {
+        console.log('I got my money for' + this.work + 'ing')
+    }
+    BasicEmployee.prototype.quit = function () {
+        console.log('I am sick of' + this.work + 'ing and I quit')
+    }
+    BasicEmployee.prototype.takeVacation = function () {
+        console.log('I am tired of' + this.work + 'ing and I need to take a vacation')
+    }
+
+
+    function Cleaner() {
+        BasicEmployee.apply(this, arguments);
+    }
+
+    function inheritBest(Child, Parent) {
+        var c = Child.prototype.constructor;
+        var F = function () {
+        };
+        F.prototype = Parent.prototype;
+        Child.prototype = new F();
+        Child.prototype.constructor = c;
+    }
+
+    inheritBest(Cleaner, BasicEmployee)
+
+
+    var cleaner2 = new Cleaner('Vasya', 35, 'male', 'clean');
+
+    cleaner1.getSalary ();
+
+    function SeniorManager () {
+        BasicEmployee.apply (this.arguments);
+    }
+
+</script>
+</body>
+</html>
