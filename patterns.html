@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+
+        function EventEmitter() {
+            this.events = [];
+        }
+
+        EventEmitter.prototype = {
+            constructor: EventEmitter,
+
+            on: function (eventName, callback, context) {
+
+
+                if (typeof this.events[eventName] === "undefined") {
+                    this.events[eventName] = [];
+                }
+
+
+                this.events[eventName].push({
+                    fn: callback,
+                    context: context || this
+                });
+            },
+
+            off: function (eventName) {
+                if (this.events[eventName]) {
+                    this.events[eventName] = [];
+                }
+            },
+
+            fireEvent: function (eventName) {
+
+                var args = Array.prototype.slice.apply(arguments, [1]);
+
+
+                if (this.events[eventName]) {
+                    for (var i = 0; i < this.events[eventName].length; i++) {
+                        this.events[eventName][i].fn.apply(this.events[eventName][i].context, args);
+                    }
+                }
+            }
+        };
+
+        function Match() {
+            if (typeof Match.instance === "object") {
+                return Match.instance;
+            }
+
+            this.goal = function goal() {
+                console.log("Player scores the goal!!!");
+                this.fireEvent("Match:goaled");
+            };
+                    this.pass = function pass() {
+                        console.log("Player passes the ball to another player!!!");
+                        this.fireEvent("Match:passed");
+                    };
+                    this.out = function out() {
+                        console.log("The ball goes off the field!!!");
+                        this.fireEvent("Match:out");
+                    };
+                    this.start = function start() {
+                        console.log("The match has started!!!");
+                        this.fireEvent("Match:started", "Wow");
+                    };
+                    this.end = function end() {
+                        console.log("The match is over!!!");
+                        this.fireEvent("Match:ended");
+                    };
+
+            Match.instance = this;
+            EventEmitter.apply(this);
+        };
+
+        Match.prototype = EventEmitter.prototype;
+
+        var OurMatch = new Match();
+            function Commentator () {
+            this.comment = function comment() {
+                console.log("Commented")
+            }
+        }
+        var OurCommentator = new Commentator();
+
+
+        OurMatch.on("Match:started", function () {
+            console.log(arguments)
+            this.comment();
+        }, OurCommentator);
+
+        OurMatch.on("Match:passed", function () {
+            console.log(arguments)
+            this.comment();
+        }, OurCommentator);
+
+        OurMatch.on("Match:goaled", function () {
+            console.log(arguments)
+            this.comment();
+        }, OurCommentator);
+
+        OurMatch.on("Match:out", function () {
+            console.log(arguments)
+            this.comment();
+        }, OurCommentator);
+
+        OurMatch.on("Match:ended", function () {
+            console.log(arguments)
+            this.comment();
+        }, OurCommentator);
+
+        OurMatch.out();
+
+
+    </script>
+</head>
+</body>
+</html>
+<body>
